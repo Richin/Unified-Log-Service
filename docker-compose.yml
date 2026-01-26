@@ -4,6 +4,7 @@ services:
     image: elastic-email-logger:latest
     environment:
       PORT: 3000
+      API_KEY: ${API_KEY}
       ELASTICSEARCH_NODE: http://elasticsearch:9200
       ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME}
       ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_PASSWORD}
