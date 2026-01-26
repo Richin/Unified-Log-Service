@@ -1,9 +1,14 @@
 require('dotenv').config();
 const axios = require('axios');
 
-const KIBANA_URL = 'http://localhost:5601';
+const KIBANA_URL = process.env.KIBANA_URL || 'http://localhost:5601';
 const USERNAME = process.env.ELASTICSEARCH_USERNAME || 'elastic';
-const PASSWORD = process.env.ELASTICSEARCH_PASSWORD || 'xjGqR_6uWP2nq3kXEs*d'; // Fallback to known dev password if env is missing
+const PASSWORD = process.env.ELASTICSEARCH_PASSWORD;
+
+if (!USERNAME || !PASSWORD) {
+    console.error('❌ Error: ELASTICSEARCH_USERNAME or ELASTICSEARCH_PASSWORD is not set.');
+    process.exit(1);
+}
 
 const auth = {
     username: USERNAME,
