@@ -12,6 +12,15 @@ Minimal Node.js service packaged for Docker and pinned to Node 24.11.1. It expos
 ```bash
 npm install
 npm run dev
+
+# Run unit tests
+npm run test
+
+# Run tests with coverage report
+npm run test:cov
+
+# Run static code analysis (ESLint)
+npm run lint
 ```
 
 The server listens on `http://localhost:3000` by default.
@@ -35,6 +44,14 @@ docker run --rm -p 3000:3000 elastic-email-logger
 ```
 
 Override the port with the `PORT` environment variable if needed.
+
+## Code Quality & Ownership
+
+This project enforces strict code quality and review standards.
+- **CI/CD**: GitHub Actions automatically runs `npm install`, `npm run lint`, `npm run test:cov`, and `npm audit --audit-level=high` on every pull request and push to `main`.
+- **Security Check**: Automated dependency scanning is running weekly via Dependabot.
+- **Code Review**: Cross-team approvals are enforced via `.github/CODEOWNERS` indicating `@elastic-logger-team`. A structured `.github/PULL_REQUEST_TEMPLATE.md` is provided to standardize reviews.
+- **Versioning**: Adheres to [Semantic Versioning](https://semver.org) (v1.0.0). See `CHANGELOG.md` for historical release changes.
 
 ## Elasticsearch Integration
 

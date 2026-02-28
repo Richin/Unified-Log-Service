@@ -25,12 +25,14 @@ Save any type of log to a specific index.
 -   **Body**: Any JSON object.
 -   **Example Request**:
     ```bash
-    POST /logs/payment
-    {
-      "transaction_id": "tx_123",
-      "amount": 50,
-      "currency": "USD"
-    }
+    curl -X POST http://localhost:3000/logs/payment \
+      -H "x-api-key: YOUR_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "transaction_id": "tx_123",
+        "amount": 50,
+        "currency": "USD"
+      }'
     ```
 -   **Response**:
     ```json
@@ -51,7 +53,8 @@ Retrieve logs programmatically.
 -   **Headers**: `x-api-key: YOUR_KEY`
 -   **Example**:
     ```bash
-    GET /logs/payment?q=currency:USD&limit=5
+    curl -X GET "http://localhost:3000/logs/payment?q=currency:USD&limit=5" \
+      -H "x-api-key: YOUR_KEY"
     ```
 -   **Response**:
     ```json
@@ -68,13 +71,16 @@ Save a generic event log.
 
 -   **Endpoint**: `POST /logs`
 -   **Body**:
-    ```json
-    {
-      "event": "user_login",
-      "payload": {
-        "userId": 123
-      }
-    }
+    ```bash
+    curl -X POST http://localhost:3000/logs \
+      -H "x-api-key: YOUR_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "event": "user_login",
+        "payload": {
+          "userId": 123
+        }
+      }'
     ```
 -   **Response**:
     ```json
@@ -91,15 +97,18 @@ Specialized endpoint for logging email service events.
 
 -   **Endpoint**: `POST /saveEmailLog`
 -   **Body**:
-    ```json
-    {
-      "status": "sent",
-      "subject": "Welcome",
-      "recipient": "user@example.com",
-      "message_body": "Hello...",
-      "error_message": null,
-      "metadata": { "campaign": "onboarding" }
-    }
+    ```bash
+    curl -X POST http://localhost:3000/saveEmailLog \
+      -H "x-api-key: YOUR_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "status": "sent",
+        "subject": "Welcome",
+        "recipient": "user@example.com",
+        "message_body": "Hello...",
+        "error_message": null,
+        "metadata": { "campaign": "onboarding" }
+      }'
     ```
 -   **Response**:
     ```json
