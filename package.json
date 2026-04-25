@@ -23,7 +23,7 @@
     "axios": "^1.13.3",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "express-rate-limit": "^8.2.1"
+    "express-rate-limit": "^8.4.1"
   },
   "devDependencies": {
     "eslint": "^10.0.2",
